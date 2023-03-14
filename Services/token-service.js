@@ -1,9 +1,8 @@
 const jwt = require('jsonwebtoken');
 const TokenModel = require('../Models/Token')
-const ApiError = require('../exeptions/api-error')
 class TokenService {
     generateToken(payload) {
-        const accessToken = jwt.sign(payload,process.env.JWT_ACCESS_SECRET, {expiresIn:'30m'})
+        const accessToken = jwt.sign(payload,process.env.JWT_ACCESS_SECRET, {expiresIn:'24h'})
         const refreshToken = jwt.sign(payload,process.env.JWT_REFRESH_SECRET, {expiresIn:'30d'})
         return {
             accessToken,
@@ -36,7 +35,6 @@ class TokenService {
         }
         const token = await TokenModel.create({user:userId,refreshToken})
         return token;
-
     }
     async removeToken(refreshToken) {
         const tokenData = await TokenModel.deleteOne({refreshToken})

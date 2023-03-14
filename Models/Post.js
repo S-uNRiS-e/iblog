@@ -3,7 +3,8 @@ const {model,Schema} = require('mongoose')
 const PostSchema = new Schema({
     postName:{
         type:String,
-        required:true
+        required:true,
+        unique:false
     },
     postDescription:{
         type:String,
@@ -13,12 +14,10 @@ const PostSchema = new Schema({
     background:{
         type:String,
         required:true,
+        unique:false,
         default:''
     },
-    user:{
-        ref:'User',
-        type:Schema.Types.ObjectId
-    }
+    userId:{type:Schema.Types.ObjectId,ref:'User'}
 })
 
 
