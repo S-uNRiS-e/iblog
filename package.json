@@ -5,7 +5,10 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "nodemon index.js"
+    "server": "nodemon index.js",
+    "client-install": "npm install --prefix client",
+    "client": "npm run dev:ssr --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
