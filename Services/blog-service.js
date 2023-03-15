@@ -17,7 +17,8 @@ class BlogService {
             postName,
             postDescription,
             background,
-            userId
+            userId,
+            createDate:new Date().toISOString()
         })
         try {
             await post.save()
@@ -30,6 +31,14 @@ class BlogService {
         try {
             const userPosts = await PostModel.find({userId})
             return userPosts
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async getPostByPostId(postId) {
+        try {
+            const post = await PostModel.find({_id:postId})
+            return post
         } catch (error) {
             console.log(error);
         }

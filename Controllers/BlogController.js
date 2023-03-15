@@ -28,6 +28,7 @@ class BlogController {
                     postName:item.postName,
                     postDescription:item.postDescription,
                     background:item.background,
+                    createdDate:item.createDate
                 }
             })
             res.status(200).json(result)
@@ -45,6 +46,7 @@ class BlogController {
                     postName:item.postName,
                     postDescription:item.postDescription,
                     background:item.background,
+                    createdDate:item.createDate
                 }
             })
             res.status(200).json(result)
@@ -53,15 +55,24 @@ class BlogController {
             
         }
     }
-    parsePostData(posts) {
-        return posts.map(item => {
-            return {
-                postId:item._id,
-                postName:item.postName,
-                postDescription:item.postDescription,
-                background:item.background,
-            }
-        })
+    async getPostById(req,res,next) {
+        try {
+            const postId = req.params.postId
+            const post = await postService.getPostByPostId(postId)
+            const result = post.map(item => {
+                return {
+                    postId:item._id,
+                    postName:item.postName,
+                    postDescription:item.postDescription,
+                    background:item.background,
+                    createdDate:item.createDate
+                }
+            })
+            res.json(result)
+            
+        } catch (error) {
+            next(error)
+        }
     }
 }
 module.exports = new BlogController()
