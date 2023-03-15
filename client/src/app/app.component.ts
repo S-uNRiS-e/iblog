@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { delay, map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'client';
+  public isLoading$: Observable<boolean> = of(false).pipe(delay(1500), map(st => !st));
 }
