@@ -1,0 +1,38 @@
+<div class="page">
+    <div class="login-form">
+        <div class="title">Sign In</div>
+        <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-controll">
+                <input 
+                    type="text" 
+                    [ngClass]="{'error': getControll('username').invalid && getControll('username').touched && isShowError}" 
+                    [value]="getControll('username').value" 
+                    formControlName="username" 
+                    placeholder="Enter your name"
+                    (input)="onChange('username')">
+                <div class="icon" (click)="getControll('username').patchValue('')">
+                    <img [src]="cancelIcon" alt="">
+                </div>
+            </div>
+            <div class="form-controll">
+                <input 
+                    [type]="inputType" 
+                    [ngClass]="{'error': getControll('password').invalid && getControll('password').touched && isShowError}" 
+                    autoComplete="new-password" 
+                    #passwordRef 
+                    formControlName="password" 
+                    placeholder="Password here"
+                    (input)="onChange('password')">
+                <div class="icon" (click)="onChangeVisibility()">
+                    <img [src]="eyeIcon" alt="icon">
+                </div>
+            </div>
+            <button class="submit-button">Sign In</button>
+        </form>
+    </div>
+    <div class="bottom-nav">
+        <div class="bottom-nav--register-link">
+            If you don't an account you can <a routerLink="/registration">Register here!</a>
+        </div>
+    </div>
+</div>

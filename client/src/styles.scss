@@ -1,20 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap&family=Monda:wght@400;700&display=swap&family=Montserrat:wght@400;500;600;700&display=swap');
 
 body {
     margin: 0;
     padding: 0;
-   
+    background-color: #fff;
+    font-size: 16px;
+    font-family: 'Monda', sans-serif;
+
 }
 
-.app, .page {
+.page {
+    background-color: #fff;
+}
+*,*::before, *::after {
+    box-sizing: border-box;
+}
+.app,
+.page {
     position: relative;
     height: 100%;
     width: 100%;
+
     app-loader {
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
     }
+}
+
+.container {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+
+    @media (max-width:838px) {}
+}
+
+.container {
+    width: 100%;
+    max-width: 474px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+button {
+    border: none;
+    background: none;
+    outline: none;
+}
+input {
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+
 }

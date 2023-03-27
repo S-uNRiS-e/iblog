@@ -47,7 +47,6 @@ class UserService {
     }
     async getAllUsers() {
         const users = await UserModel.find();
-        console.log(users);
         return users.map(item => {
             return {
                 username:item.username,

@@ -7,5 +7,5 @@ import { delay, map, Observable, of } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public isLoading$: Observable<boolean> = of(false).pipe(delay(3500), map(st => !st));
+  public isLoading$: Observable<boolean> = of(false).pipe(delay(1500), map(st => !st));
 }
