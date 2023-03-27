@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { WelcomeGuard } from './modules/guards/welcome.guard';
+import { AuthGuard } from './modules/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'welcome' },
+  { path: '', pathMatch: 'full', redirectTo: 'main' },
   {
     path: 'welcome',
-    loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule),
-    canActivate: [WelcomeGuard]
+    loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule)
   },
   { path: 'login', loadChildren: () => import('./pages/auth/login/login.module').then(m => m.LoginModule) },
   { path: 'registration', loadChildren: () => import('./pages/auth/registration/registration.module').then(m => m.RegistrationModule) },
-  { path: 'main', loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule) },
+  { path: 'main', loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule), canActivate:[AuthGuard] },
 ];
 
 @NgModule({
@@ -19,6 +18,6 @@ const routes: Routes = [
     initialNavigation: 'enabledBlocking'
   })],
   exports: [RouterModule],
-  providers:[WelcomeGuard]
+  providers:[AuthGuard]
 })
 export class AppRoutingModule { }

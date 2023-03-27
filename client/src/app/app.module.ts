@@ -7,12 +7,15 @@ import { AppComponent } from './app.component';
 import { TokenInterceptor } from './core/token.interceptor';
 import { SharedModule } from './modules/shared.module';
 
+import { HotToastModule } from '@ngneat/hot-toast';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    HotToastModule.forRoot(),
     AppRoutingModule,
     SharedModule
   ],

@@ -1,10 +1,11 @@
+import { ToastrService } from './../../../modules/service/toastr/toastr.service';
 import { AuthService } from './../../../modules/service/auth/auth.service';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { NUMBERS_AND_LETTERS } from 'src/app/core/constans';
 import { LoginI, LoginIcons, LoginPayload, LoginResponce, PasswordTypes } from './interface/login.interface';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,7 +24,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   public cancelIcon = LoginIcons.cancel as string;
   //obs 
   private subscriptions: Subscription = new Subscription();
-  constructor(private authService: AuthService) { }
+
+
+  constructor(
+    private toastrService:ToastrService,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this._initFormGroup()
@@ -66,8 +73,11 @@ export class LoginComponent implements OnInit, OnDestroy {
           .subscribe(
             (result: LoginResponce) => {
               const { accessToken, refreshToken, user: { username, id } } = result;
+              localStorage.setItem('blog-token', accessToken)
+              this.router.navigate(['/main'])
             },
             (error) => {
+              this.toastrService.showError(error.error.message)
             }
           )
       )
