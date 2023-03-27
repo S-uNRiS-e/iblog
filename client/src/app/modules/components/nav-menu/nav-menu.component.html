@@ -1,1 +1,7 @@
-<p>nav-menu works!</p>
+<div class="page">
+    <div class="nav-menu">
+        <div class="link" *ngFor="let item of menu">
+            <img [src]="item.icon" alt="icon" [ngClass]="{'default': item.existStyle}">
+        </div>
+    </div>
+</div>

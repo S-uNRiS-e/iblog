@@ -1,3 +1,4 @@
+import { AuthService } from './modules/service/auth/auth.service';
 import { Component } from '@angular/core';
 import { delay, map, Observable, of } from 'rxjs';
 
@@ -8,4 +9,5 @@ import { delay, map, Observable, of } from 'rxjs';
 })
 export class AppComponent {
   public isLoading$: Observable<boolean> = of(false).pipe(delay(1500), map(st => !st));
+  constructor(public authService:AuthService) {}
 }

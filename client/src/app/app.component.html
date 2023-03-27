@@ -3,4 +3,5 @@
   <div class="container">
     <router-outlet *ngIf="(isLoading$ | async )"></router-outlet>
   </div>
+  <app-nav-menu *ngIf="authService.isAuthenticated() && (isLoading$ | async )"></app-nav-menu>
 </div>
