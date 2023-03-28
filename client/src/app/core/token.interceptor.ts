@@ -15,14 +15,15 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(public authService: AuthService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.authService.isAuthenticated();
+    const isTokenExits = this.authService.isAuthenticated();
+    const token = localStorage.getItem('blog-token');;
     const apiUrl = 'http://localhost:5500/api'
 
     request = request.clone({
       url: `${apiUrl}${request.url}`,
     });
     
-    if (token) {
+    if (isTokenExits) {
       request = request.clone({
         setHeaders: { Authorization: `Bearer ${token}` }
       });
