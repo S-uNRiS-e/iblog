@@ -10,6 +10,7 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { WigEditorComponent } from './components/wig-editor/wig-editor.component';
 import {NgxWigModule} from 'ngx-wig';
+import { NewsBannerComponent } from './components/news-banner/news-banner.component';
 
 const COMPONENTS = [
     LoaderComponent, 
@@ -17,7 +18,8 @@ const COMPONENTS = [
     HeaderComponent,
     CreatePostComponent,
     FileUploadComponent,
-    WigEditorComponent
+    WigEditorComponent,
+    NewsBannerComponent
 ]
 const MODULES = [
     CommonModule,

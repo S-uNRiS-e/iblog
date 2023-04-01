@@ -16,7 +16,8 @@ const PostSchema = new Schema({
         default:''
     },
     createDate: {type:Date, required:false,unique:false},
-    userId:{type:Schema.Types.ObjectId,ref:'User'}
+    userId:{type:Schema.Types.ObjectId,ref:'User'},
+    author:{type:Object, required:false,unique:false}
 })
 
 

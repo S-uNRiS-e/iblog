@@ -1,17 +1,21 @@
 const postService = require('../Services/blog-service')
+const UserService = require('../Services/user-service')
+
 class BlogController {
     async getAllPosts(req,res) {
         const posts = await await postService.getAllPosts()
         res.status(200).json(posts);
     }
     async createPost(req,res,next) {
-        console.log('req',req.body);
         try {
+            const author = await UserService.findUserByUserId(req.user.id)
+            console.log('author', author);
             const payload = {
                 postName:req.body.postName,
                 postDescription:req.body.postDescription,
                 userId:req.user.id,
-                imageSrc:req.file ? req.file.path : ''
+                imageSrc:req.file ? req.file.path : '',
+                author
             }
             const post = await postService.createPost(payload)
             res.status(200).json(post)  

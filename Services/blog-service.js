@@ -1,25 +1,23 @@
-const UserModel = require('../Models/User.js')
 const PostModel = require('../Models/Post.js')
-const UserService = require('../Services/user-service')
-const ApiError = require('../exeptions/api-error')
 class BlogService {
     async getAllPosts() {
         try {
             const posts = await PostModel.find()
-            return posts
+            return posts;
         } catch (error) {
             console.log(error);
         }
     }
     async createPost(payload) {
-        const { postName, postDescription, background, userId,imageSrc } = payload
+        const { postName, postDescription, background, userId,imageSrc,author } = payload
         const post = new PostModel({
             postName,
             postDescription,
             background,
             imageSrc,
             createDate:new Date().toISOString(),
-            userId
+            userId,
+            author
         })
         try {
             await post.save()
