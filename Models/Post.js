@@ -11,10 +11,8 @@ const PostSchema = new Schema({
         required:true,
         unique:false
     },
-    background:{
+    imageSrc:{
         type:String,
-        required:true,
-        unique:false,
         default:''
     },
     createDate: {type:Date, required:false,unique:false},

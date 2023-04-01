@@ -12,13 +12,14 @@ class BlogService {
         }
     }
     async createPost(payload) {
-        const { postName, postDescription, background, userId } = payload
+        const { postName, postDescription, background, userId,imageSrc } = payload
         const post = new PostModel({
             postName,
             postDescription,
             background,
-            userId,
-            createDate:new Date().toISOString()
+            imageSrc,
+            createDate:new Date().toISOString(),
+            userId
         })
         try {
             await post.save()

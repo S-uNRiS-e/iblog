@@ -5,16 +5,18 @@ class BlogController {
         res.status(200).json(posts);
     }
     async createPost(req,res,next) {
+        console.log('req',req.body);
         try {
             const payload = {
                 postName:req.body.postName,
                 postDescription:req.body.postDescription,
-                background:req.body.background,
-                userId:req.user.id
+                userId:req.user.id,
+                imageSrc:req.file ? req.file.path : ''
             }
             const post = await postService.createPost(payload)
             res.status(200).json(post)  
         } catch (error) {
+            console.log('ops error', error);
             next(error)
         }
     }
