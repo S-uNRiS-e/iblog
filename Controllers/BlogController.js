@@ -9,7 +9,6 @@ class BlogController {
     async createPost(req,res,next) {
         try {
             const author = await UserService.findUserByUserId(req.user.id)
-            console.log('author', author);
             const payload = {
                 postName:req.body.postName,
                 postDescription:req.body.postDescription,
@@ -20,7 +19,6 @@ class BlogController {
             const post = await postService.createPost(payload)
             res.status(200).json(post)  
         } catch (error) {
-            console.log('ops error', error);
             next(error)
         }
     }

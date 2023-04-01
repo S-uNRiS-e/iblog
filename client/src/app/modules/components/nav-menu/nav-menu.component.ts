@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { DialogService } from '@ngneat/dialog';
 import { CreatePostComponent } from '../create-post/create-post.component';
 import { NavigateMenu } from './nav-menu.mock';
@@ -11,10 +11,16 @@ import { NavigateMenu } from './nav-menu.mock';
 export class NavMenuComponent implements OnInit {
   public menu = NavigateMenu;
   private dialog = inject(DialogService);
+  @Output() updateAfterCreateCallBack = new EventEmitter();
   ngOnInit(): void {
     
   }
   public onNavigateLink(){
     const dialogRef = this.dialog.open(CreatePostComponent);
+    dialogRef.afterClosed$.subscribe(status => {
+      if(status) {
+        this.updateAfterCreateCallBack.emit(status)
+      }
+    })
   }
 }

@@ -1,4 +1,9 @@
-<app-news-banner
-    [news]="recommendPost"
-></app-news-banner>
-<app-nav-menu ></app-nav-menu>
+<div class="main-page">
+    <app-news-banner
+        [news]="recommendPost"
+    ></app-news-banner>
+    <div class="news-list">
+        <app-news-item *ngFor="let item of posts" [news]="item"></app-news-item>
+    </div>
+</div>
+<app-nav-menu (updateAfterCreateCallBack)="updateFeed($event)"></app-nav-menu>

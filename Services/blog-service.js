@@ -3,7 +3,7 @@ class BlogService {
     async getAllPosts() {
         try {
             const posts = await PostModel.find()
-            return posts;
+            return posts.reverse();
         } catch (error) {
             console.log(error);
         }

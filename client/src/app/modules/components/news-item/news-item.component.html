@@ -1,0 +1,10 @@
+<div class="news-item">
+    <div class="banner">
+        <img [src]="news?.banner" alt="">
+    </div>
+    <div class="news-info">
+        <div class="news-tag">{{news?.tag}}</div>
+        <div class="news-name">{{news?.name}}</div>
+        <div class="news-date">{{news?.createdDate | date:'MMMM d, yyyy'}}</div>
+    </div>
+</div>

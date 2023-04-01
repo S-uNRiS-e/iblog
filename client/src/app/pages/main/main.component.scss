@@ -1,0 +1,8 @@
+.main-page {
+    height: calc(100vh - 53px);
+    overflow: scroll;
+    overflow-x: hidden;
+    .news-list {
+        padding: 0 18px;
+    }
+}

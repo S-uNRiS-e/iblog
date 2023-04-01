@@ -41,10 +41,11 @@ export class CreatePostComponent {
         .subscribe(
           result => {
             this.toastrService.showSuccess('Successfully created')
-            this.ref.close()
+            this.ref.close(true)
           },
           err => {
-            this.toastrService.showSuccess(err.error.message)
+            this.toastrService.showError(err.error.message)
+            this.ref.close(false)
           })
     }
   }
