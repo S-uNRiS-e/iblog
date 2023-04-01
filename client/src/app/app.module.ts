@@ -9,6 +9,7 @@ import { SharedModule } from './modules/shared.module';
 
 import { HotToastModule } from '@ngneat/hot-toast';
 import { provideDialogConfig } from '@ngneat/dialog';
+import { ErrorCatchingInterceptor } from './core/error-catching.intercaptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,12 @@ import { provideDialogConfig } from '@ngneat/dialog';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorCatchingInterceptor,
+      multi: true
+  }
   ],
   bootstrap: [AppComponent]
 })

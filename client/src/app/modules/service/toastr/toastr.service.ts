@@ -11,4 +11,7 @@ export class ToastrService {
   public showError(message: string, options:any = {}) {
     this.toast.error(message,options);
   }
+  public showSuccess(message: string, options:any = {}) {
+    this.toast.success(message,options);
+  }
 }
