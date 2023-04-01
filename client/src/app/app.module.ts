@@ -8,6 +8,7 @@ import { TokenInterceptor } from './core/token.interceptor';
 import { SharedModule } from './modules/shared.module';
 
 import { HotToastModule } from '@ngneat/hot-toast';
+import { provideDialogConfig } from '@ngneat/dialog';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,9 @@ import { HotToastModule } from '@ngneat/hot-toast';
     SharedModule
   ],
   providers: [
+    provideDialogConfig({
+      closeButton:false
+    }),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

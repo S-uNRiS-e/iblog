@@ -2,3 +2,7 @@
     background-color: #fff;
     height: calc(100vh);
 }
+
+::ng-deep .ngneat-dialog-backdrop {
+    padding: 10px!important;
+}

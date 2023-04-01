@@ -1,0 +1,8 @@
+<input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+<div class="file-upload">
+    <img src="/assets/images/icons/upload-img-icon.png" alt="upload icon" (click)="fileUpload.click()" *ngIf="!fileName">
+    <div class="active" *ngIf="fileName" (click)="fileUpload.click()">
+        <div class="file-name">{{fileName}}</div>
+        <img src="/assets/images/icons/upload-white.png" alt="">
+    </div>
+</div> 

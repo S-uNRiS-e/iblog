@@ -1,0 +1,22 @@
+<div class="dialog">
+    <div class="dialog--title">
+        <div class="name">What's on your mind?</div>
+        <img class="close" src="/assets/images/icons/cancel-dark-icon.svg" alt="" (click)="ref.close()">
+    </div>
+    <div class="dialog--content">
+        <form [formGroup]="createForm">
+            <div class="post-name">
+                <textarea placeholder="Enter the name..." formControlName="postName"></textarea>
+            </div>
+            <div class="post-editor">
+                <app-wig-editor [inputFormControl]="getControl('postDescription')"></app-wig-editor>
+            </div>
+            <div class="actions">
+                <div class="file-upload">
+                    <file-upload (fileCallback)="onFileSelect($event)"></file-upload>
+                </div>
+                <div class="save">Save</div>
+            </div>
+        </form>
+    </div>
+</div>

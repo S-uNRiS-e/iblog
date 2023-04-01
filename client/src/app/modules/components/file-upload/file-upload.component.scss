@@ -1,0 +1,38 @@
+.file-input {
+    display: none;
+}
+
+.file-upload {
+    cursor: pointer;
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    max-width: 40px;
+    img {
+        object-fit: cover;
+        height: 40px;
+        width: 40px;
+    }
+    .active {
+        display: inline-flex;
+        background: linear-gradient(113.45deg, #8BC5EC 0%, #9599E2 88.09%);
+        border-radius: 10px;
+        align-items: center;
+        padding: 5px 10px;
+        .file-name {
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 16px;
+            text-overflow: ellipsis;
+            max-width: 170px;
+            color: #fff;
+
+        }
+
+        img {
+            margin-left: 8px;
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
