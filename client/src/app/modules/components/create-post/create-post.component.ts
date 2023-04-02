@@ -11,11 +11,9 @@ import { ToastrService } from '../../service/toastr/toastr.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreatePostComponent {
-
-  constructor(
-    private blogHttpService: BlogHttpService,
-    private toastrService:ToastrService
-    ) { }
+  private blogHttpService = inject(BlogHttpService)
+  private toastrService = inject(ToastrService)
+  constructor( ) { }
 
   ref: DialogRef<any> = inject(DialogRef);
   createForm: FormGroup = new FormGroup({

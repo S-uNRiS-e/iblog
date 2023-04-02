@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BlogHttpService } from 'src/app/modules/service/blog-http/blog-http.service';
 
@@ -12,7 +12,8 @@ export class MainComponent implements OnInit, OnDestroy{
   public posts:any = [];
   public isLoading = true;
   private subscriptions$ = new Subscription()
-  constructor(private blogHttpService:BlogHttpService) {
+  private blogHttpService = inject(BlogHttpService)
+  constructor() {
     this.blogHttpService.getAllPosts().subscribe()
   };
 

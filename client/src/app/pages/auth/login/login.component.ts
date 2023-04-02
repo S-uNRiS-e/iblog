@@ -1,6 +1,6 @@
 import { ToastrService } from './../../../modules/service/toastr/toastr.service';
 import { AuthService } from './../../../modules/service/auth/auth.service';
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { NUMBERS_AND_LETTERS } from 'src/app/core/constans';
@@ -24,13 +24,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   public cancelIcon = LoginIcons.cancel as string;
   //obs 
   private subscriptions: Subscription = new Subscription();
+  
+  private toastrService = inject(ToastrService)
+  private authService = inject(AuthService)
+  private router = inject(Router)
 
-
-  constructor(
-    private toastrService:ToastrService,
-    private authService: AuthService,
-    private router: Router
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
     this._initFormGroup()

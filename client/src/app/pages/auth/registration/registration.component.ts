@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { PasswordTypes } from '../login/interface/login.interface';
 import { Subscription } from 'rxjs';
@@ -27,12 +27,11 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   //obs 
   private subscriptions: Subscription = new Subscription();
 
+  private toastrService = inject(ToastrService)
+  private authService = inject(AuthService)
+  private router = inject(Router)
 
-  constructor(
-    private toastrService: ToastrService,
-    private authService: AuthService,
-    private router: Router
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
     this._initFormGroup()

@@ -1,5 +1,5 @@
 import { AuthService } from './modules/service/auth/auth.service';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { delay, map, Observable, of, Subscription } from 'rxjs';
 import { BlogHttpService } from './modules/service/blog-http/blog-http.service';
 
@@ -10,10 +10,11 @@ import { BlogHttpService } from './modules/service/blog-http/blog-http.service';
 })
 export class AppComponent implements OnDestroy{
   private subscribtions$: Subscription = new Subscription();
-  constructor(
-    public authService: AuthService,
-    private blogHttpService: BlogHttpService
-  ) {}
+
+  public authService = inject(AuthService)
+  public blogHttpService = inject(BlogHttpService)
+  
+  constructor() {}
   public updateFeed(status: boolean): void {
     if (status) {
       this.subscribtions$.add(
