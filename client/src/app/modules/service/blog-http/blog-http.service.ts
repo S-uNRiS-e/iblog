@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, map, switchMap } from 'rxjs';
 import { BlogParseService } from '../blog-parse/blog-parse.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogHttpService {
+  public posts$:BehaviorSubject<any> = new BehaviorSubject({posts:null,recommendPost:null})
   constructor(
     private http:HttpClient,
     private blogParseService:BlogParseService
@@ -22,10 +23,11 @@ export class BlogHttpService {
       .pipe(
         map(response => {
           const parseData = this.blogParseService.parsePostData(response)
-          return {
+          const data = {
             posts:parseData,
             recommendPost:parseData[0]
           }
+          this.posts$.next(data)
         })
       )
   }

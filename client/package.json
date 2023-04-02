@@ -30,6 +30,7 @@
     "@schematics/angular": "^15.2.3",
     "@types/quill": "^2.0.10",
     "express": "^4.15.2",
+    "ngx-skeleton-loader": "^7.0.0",
     "ngx-wig": "^15.1.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

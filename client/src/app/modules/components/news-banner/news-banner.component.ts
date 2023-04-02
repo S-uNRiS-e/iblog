@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class NewsBannerComponent {
   @Input() news:any = {};
-
+  @Input() isLoading = true;
 
   public parseUserName(userName:string):string {
     return userName.charAt(0);

@@ -1,13 +1,27 @@
 import { AuthService } from './modules/service/auth/auth.service';
-import { Component } from '@angular/core';
-import { delay, map, Observable, of } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { delay, map, Observable, of, Subscription } from 'rxjs';
+import { BlogHttpService } from './modules/service/blog-http/blog-http.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  public isLoading$: Observable<boolean> = of(false).pipe(delay(1500), map(st => !st));
-  constructor(public authService:AuthService) {}
+export class AppComponent implements OnDestroy{
+  private subscribtions$: Subscription = new Subscription();
+  constructor(
+    public authService: AuthService,
+    private blogHttpService: BlogHttpService
+  ) {}
+  public updateFeed(status: boolean): void {
+    if (status) {
+      this.subscribtions$.add(
+        this.blogHttpService.getAllPosts().subscribe()
+      )
+    }
+  }
+  ngOnDestroy(): void {
+    this.subscribtions$ && this.subscribtions$.unsubscribe()
+  }
 }

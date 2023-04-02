@@ -1,4 +1,4 @@
-<div class="news-banner">
+<div class="news-banner" *ngIf="!isLoading; else skeleton">
     <div class="banner">
         <img [src]="news?.banner" alt="news banner">
     </div>
@@ -16,3 +16,11 @@
         </div>
     </div>
 </div>
+<ng-template #skeleton>
+    <div class="news-banner">
+        <app-skeleton
+            [height]="'360px'"
+            [bRadius]="20"
+        ></app-skeleton>
+    </div>
+</ng-template>

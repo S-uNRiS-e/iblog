@@ -1,7 +1,6 @@
 <div class="app">
-  <app-loader  *ngIf="!(isLoading$ | async)"></app-loader>
   <div class="container">
-    <router-outlet *ngIf="(isLoading$ | async )"></router-outlet>
+    <router-outlet></router-outlet>
   </div>
-  
+  <app-nav-menu *ngIf="authService.isAuthenticated()" (updateAfterCreateCallBack)="updateFeed($event)"></app-nav-menu>
 </div>

@@ -1,9 +1,16 @@
 <div class="main-page">
     <app-news-banner
         [news]="recommendPost"
+        [isLoading]="isLoading"
     ></app-news-banner>
     <div class="news-list">
         <app-news-item *ngFor="let item of posts" [news]="item"></app-news-item>
+        <app-skeleton
+            *ngIf="posts.length === 0"
+            [count]="'4'"
+            [animation]="'progress'"
+            [height]="'112px'"
+            [bRadius]="20"
+        ></app-skeleton>
     </div>
 </div>
-<app-nav-menu (updateAfterCreateCallBack)="updateFeed($event)"></app-nav-menu>

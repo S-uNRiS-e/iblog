@@ -11,6 +11,7 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { provideDialogConfig } from '@ngneat/dialog';
 import { ErrorCatchingInterceptor } from './core/error-catching.intercaptor';
 
+
 @NgModule({
   declarations: [
     AppComponent

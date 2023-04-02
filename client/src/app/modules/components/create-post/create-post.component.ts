@@ -30,7 +30,6 @@ export class CreatePostComponent {
   }
   public onSubmit(): void {
     this.isShowErrors = true;
-
     if (this.createForm.valid) {
       const formData = new FormData();
       formData.append('postName', this.getControl('postName').value)
