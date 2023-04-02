@@ -6,6 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "server": "nodemon index.js",
+    "start": "node index.js",
     "client-install": "npm install --prefix client",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""

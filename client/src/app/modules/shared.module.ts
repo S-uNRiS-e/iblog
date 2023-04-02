@@ -1,7 +1,6 @@
 import { RouterModule } from '@angular/router';
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { LoaderComponent } from './components/loader/loader.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -16,7 +15,6 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 
 const COMPONENTS = [
-    LoaderComponent, 
     NavMenuComponent, 
     HeaderComponent,
     CreatePostComponent,
