@@ -1,3 +1,51 @@
 <div class="page">
-    <h1>registration work!</h1>
+    <div class="registration-form">
+        <div class="title">Sign Up</div>
+        <form class="form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <div class="form-controll">
+                <input 
+                    type="text" 
+                    [ngClass]="{'error': getControll('username').invalid && getControll('username').touched && isShowError}" 
+                    [value]="getControll('username').value" 
+                    formControlName="username" 
+                    placeholder="Enter your name"
+                    (input)="onChange('username')">
+                <div class="icon" (click)="getControll('username').patchValue('')">
+                    <img [src]="cancelIcon" alt="">
+                </div>
+            </div>
+            <div class="form-controll">
+                <input 
+                    [type]="inputType" 
+                    [ngClass]="{'error': getControll('firstPassword').invalid && getControll('firstPassword').touched && isShowError}" 
+                    autoComplete="new-password" 
+                    #passwordRef 
+                    formControlName="firstPassword" 
+                    placeholder="Password here"
+                    (input)="onChange('firstPassword')">
+                <div class="icon" (click)="onChangeVisibility()">
+                    <img [src]="eyeIcon" alt="icon">
+                </div>
+            </div>
+            <div class="form-controll">
+                <input 
+                    [type]="inputType" 
+                    [ngClass]="{'error': getControll('secondPassword').invalid && getControll('secondPassword').touched && isShowError}" 
+                    autoComplete="new-password" 
+                    #passwordRef 
+                    formControlName="secondPassword" 
+                    placeholder="Password here"
+                    (input)="onChange('secondPassword')">
+                <div class="icon" (click)="onChangeVisibility()">
+                    <img [src]="eyeIcon" alt="icon">
+                </div>
+            </div>
+            <button class="submit-button">Sign Up</button>
+        </form>
+    </div>
+    <div class="bottom-nav">
+        <div class="bottom-nav--register-link">
+            If you have account you can <a routerLink="/login">Login here!</a>
+        </div>
+    </div>
 </div>
