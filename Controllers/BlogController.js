@@ -59,6 +59,29 @@ class BlogController {
             
         }
     }
+    async getFavPosts(req,res,next) {
+        try {
+            const userId = req.user.id
+            const favorites = await postService.getUserFavPosts(userId)
+            res.status(200).json(favorites)
+        } catch (error) {
+            next(error)
+        }
+    } 
+    async addToFavorite(req,res,next) {
+        try {
+            const post = await postService.getPostByPostId(req.params.postId)
+            const userId = req.user.id
+            const payload = {
+                post,
+                userId
+            }
+            const favorite = await postService.addToFavorite(payload)
+            res.status(200).json(favorite)
+        } catch (error) {
+            next(error)
+        }
+    }
     async getPostById(req,res,next) {
         try {
             const postId = req.params.postId

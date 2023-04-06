@@ -1,4 +1,6 @@
-const PostModel = require('../Models/Post.js')
+const PostModel = require('../Models/Post.js');
+const UserModel = require('../Models/User.js');
+const FavoriteModel = require('../Models/Favorite.js');
 class BlogService {
     async getAllPosts() {
         try {
@@ -9,13 +11,13 @@ class BlogService {
         }
     }
     async createPost(payload) {
-        const { postName, postDescription, background, userId,imageSrc,author } = payload
+        const { postName, postDescription, background, userId, imageSrc, author } = payload
         const post = new PostModel({
             postName,
             postDescription,
             background,
             imageSrc,
-            createDate:new Date().toISOString(),
+            createDate: new Date().toISOString(),
             userId,
             author
         })
@@ -26,17 +28,39 @@ class BlogService {
             console.log(error);
         }
     }
+    async addToFavorite(payload) {
+        const {post,userId} = payload;
+
+        const favorite = await new FavoriteModel({
+            post,
+            userId
+        })
+        try {
+            await favorite.save()
+            return favorite;
+        } catch (error) {
+            return error
+        }
+    }
     async getUserPosts(userId) {
         try {
-            const userPosts = await PostModel.find({userId})
+            const userPosts = await PostModel.find({ userId })
             return userPosts
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async getUserFavPosts(userId) {
+        try {
+            const userPosts = await FavoriteModel.find({userId})
+            return {favorites:userPosts}
         } catch (error) {
             console.log(error);
         }
     }
     async getPostByPostId(postId) {
         try {
-            const post = await PostModel.find({_id:postId})
+            const post = await PostModel.find({ _id: postId })
             return post
         } catch (error) {
             console.log(error);
