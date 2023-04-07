@@ -13,6 +13,7 @@ import { NewsBannerComponent } from './components/news-banner/news-banner.compon
 import { NewsItemComponent } from './components/news-item/news-item.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
+import { LikeButtonComponent } from './components/like-button/like-button.component';
 
 const COMPONENTS = [
     NavMenuComponent, 
@@ -22,7 +23,8 @@ const COMPONENTS = [
     WigEditorComponent,
     NewsBannerComponent,
     NewsItemComponent,
-    SkeletonComponent
+    SkeletonComponent,
+    LikeButtonComponent
 ]
 const MODULES = [
     CommonModule,
@@ -34,7 +36,7 @@ const MODULES = [
 ]
 @NgModule({
     imports:[...MODULES],
-    declarations:[...COMPONENTS],
+    declarations:[...COMPONENTS ],
     exports:[
         ...COMPONENTS,
         ...MODULES

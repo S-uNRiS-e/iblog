@@ -18,6 +18,12 @@ export class BlogHttpService {
   public getAllPosts():Observable<any> {
     return this._getAllPosts()
   }
+  public getPostById(id:string):Observable<any> {
+    return this._getPostById(id)
+  }
+  private _getPostById(id:string):Observable<any> {
+    return this.http.get(`/post/${id}`)
+  }
   private _getAllPosts():Observable<any> {
     return this.http.get(`/posts`)
       .pipe(

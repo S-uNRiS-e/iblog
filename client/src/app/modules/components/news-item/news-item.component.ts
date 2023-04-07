@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news-item',
@@ -6,5 +7,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./news-item.component.scss']
 })
 export class NewsItemComponent {
-  @Input() news: any
+  @Input() news: any;
+  private router = inject(Router)
+  public onItemClick(id:string):void {
+    this.router.navigate([`/news-detail/${id}`])
+  }
 }
+

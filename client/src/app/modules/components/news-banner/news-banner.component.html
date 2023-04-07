@@ -1,4 +1,4 @@
-<div class="news-banner" *ngIf="!isLoading; else skeleton">
+<div class="news-banner" *ngIf="!isLoading; else skeleton" (click)="onBannerClick(news?.postId)">
     <div class="banner">
         <img [src]="news?.banner" alt="news banner">
     </div>

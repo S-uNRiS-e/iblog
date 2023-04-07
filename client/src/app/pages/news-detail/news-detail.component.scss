@@ -1,0 +1,146 @@
+.detail-page {
+    height: calc(100vh - 53px);
+    overflow-y: auto;
+    .banner {
+        .news-banner {
+            position: relative;
+            cursor: pointer;
+        
+            .banner {
+                position: relative;
+        
+                img {
+                    height: 360px;
+                    width: 100%;
+                    object-fit: cover;
+                    display: block;
+                    object-position: center;
+        
+                    -webkit-border-bottom-right-radius: 25px;
+                    -webkit-border-bottom-left-radius: 25px;
+                    -moz-border-radius-bottomright: 25px;
+                    -moz-border-radius-bottomleft: 25px;
+                    border-bottom-right-radius: 25px;
+                    border-bottom-left-radius: 25px;
+        
+                }
+        
+                &::after {
+                    -webkit-box-shadow: inset 1px -140px 22px 1px rgba($color: #000000, $alpha: .65);
+                    box-shadow: inset 1px -140px 22px 1px rgba($color: #000000, $alpha: .65);
+                    content: '';
+                    display: block;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+
+                    -webkit-border-bottom-right-radius: 25px;
+                    -webkit-border-bottom-left-radius: 25px;
+                    -moz-border-radius-bottomright: 25px;
+                    -moz-border-radius-bottomleft: 25px;
+                    border-bottom-right-radius: 25px;
+                    border-bottom-left-radius: 25px;
+                }
+            }
+        
+            .news-info {
+                position: absolute;
+                bottom: 10px;
+                left: 36px;
+                font-family: "Montserrat", sans-serif;
+        
+                .news-tag {
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 15px;
+                    text-align: center;
+                    color: #FFFFFF;
+                }
+        
+                .news-name {
+                    width: 100%;
+                    max-width: 360px;
+                    margin: 10px auto;
+                    color: #fff;
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 22px;
+                    line-height: 27px;
+        
+                }
+        
+                .news-user-info {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+        
+                    .user-info {
+                        display: flex;
+                        align-items: center;
+        
+                        .avatar {
+                            padding: 8px 13px;
+                            border-radius: 50%;
+                            font-size: 18px;
+                            font-weight: 700;
+                            color: rgba(255, 255, 255, 0.5);
+                            border: 2px solid rgba(255, 255, 255, 0.7);
+                        }
+        
+                        .name {
+                            margin-left: 5px;
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 15px;
+                            line-height: 16px;
+                            color: #FFFFFF;
+                            .created-date {
+                                font-style: normal;
+                                font-weight: 600;
+                                font-size: 12px;
+                                line-height: 15px;
+                                text-align: center;
+                                font-family: "Montserrat", sans-serif;
+                                margin-top: 4px;
+                                color: #c0c0c0;
+                            }
+                        }
+                    }
+        
+                }
+            }
+        }
+    }
+    .news {
+        width: 100%;
+        height: 100%;
+        padding: 0 18px;
+        .actions {
+            padding: 15px 0px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .news-name {
+                color: #000;
+                font-size: 22px;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 700;
+            }
+        }
+        .the-news {
+            margin-top: 15px;
+            color: #636363;
+            font-size: 16px;
+            font-family: "Monda",sans-serif;
+            // overflow: hidden;
+            ::ng-deep figure {
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

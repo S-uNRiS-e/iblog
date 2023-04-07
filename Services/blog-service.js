@@ -1,5 +1,4 @@
 const PostModel = require('../Models/Post.js');
-const UserModel = require('../Models/User.js');
 const FavoriteModel = require('../Models/Favorite.js');
 class BlogService {
     async getAllPosts() {

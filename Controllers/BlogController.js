@@ -86,16 +86,7 @@ class BlogController {
         try {
             const postId = req.params.postId
             const post = await postService.getPostByPostId(postId)
-            const result = post.map(item => {
-                return {
-                    postId:item._id,
-                    postName:item.postName,
-                    postDescription:item.postDescription,
-                    background:item.background,
-                    createdDate:item.createDate
-                }
-            })
-            res.json(result)
+            res.json(post)
             
         } catch (error) {
             next(error)

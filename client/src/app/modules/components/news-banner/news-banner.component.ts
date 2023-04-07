@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news-banner',
@@ -6,10 +7,15 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./news-banner.component.scss']
 })
 export class NewsBannerComponent {
-  @Input() news:any = {};
-  @Input() isLoading = true;
 
-  public parseUserName(userName:string):string {
+  @Input() news: any = {};
+  @Input() isLoading = true;
+  private router = inject(Router)
+
+  public parseUserName(userName: string): string {
     return userName.charAt(0);
+  }
+  public onBannerClick(id: string) {
+    this.router.navigate([`/news-detail/${id}`])
   }
 }

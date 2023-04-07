@@ -1,0 +1,42 @@
+<div class="detail-page">
+    <div class="banner">
+        <div class="news-banner" *ngIf="!isLoading; else skeleton">
+            <div class="banner">
+                <img [src]="news?.banner" alt="news banner">
+            </div>
+            <div class="news-info">
+                <div class="news-tag">{{news?.tag}}</div>
+                <div class="news-name">{{news?.name}}</div>
+                <div class="news-user-info">
+                    <div class="user-info">
+                        <div class="avatar">{{parseUserName(news?.userName || '')}}</div>
+                        <div class="name">
+                            {{news?.userName}}
+                            <div class="created-date">
+                                {{news?.createdDate | date:'MMMM d, yyyy'}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="news">
+        <div class="actions">
+            <div class="news-name">
+                {{news?.name}}
+            </div>
+            <like-button></like-button>
+        </div>
+        <div class="the-news" [innerHtml]="news?.description"></div>
+    </div>
+    <ng-template #skeleton>
+        <div class="news-banner">
+            <app-skeleton
+                [height]="'360px'"
+                [bRadius]="20"
+            ></app-skeleton>
+        </div>
+    </ng-template>
+</div>
+  
