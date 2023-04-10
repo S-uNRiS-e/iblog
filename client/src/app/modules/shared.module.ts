@@ -14,6 +14,8 @@ import { NewsItemComponent } from './components/news-item/news-item.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { LikeButtonComponent } from './components/like-button/like-button.component';
+import { SearchComponent } from './components/search/search.component';
+import { DebounceKeyupDirective } from './directives/debounce-keyup.directive';
 
 const COMPONENTS = [
     NavMenuComponent, 
@@ -24,7 +26,10 @@ const COMPONENTS = [
     NewsBannerComponent,
     NewsItemComponent,
     SkeletonComponent,
-    LikeButtonComponent
+    LikeButtonComponent,
+    SearchComponent,
+    DebounceKeyupDirective,
+    DebounceKeyupDirective
 ]
 const MODULES = [
     CommonModule,
@@ -36,7 +41,7 @@ const MODULES = [
 ]
 @NgModule({
     imports:[...MODULES],
-    declarations:[...COMPONENTS ],
+    declarations:[...COMPONENTS],
     exports:[
         ...COMPONENTS,
         ...MODULES

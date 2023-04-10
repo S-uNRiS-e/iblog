@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'like-button',
@@ -7,11 +7,13 @@ import { Component, Input } from '@angular/core';
 })
 export class LikeButtonComponent {
   @Input() public isLike = false;
-
+  @Output() likeCallback = new EventEmitter<boolean>()
   public onLike() {
+    this.likeCallback.emit(true);
     this.isLike = true;
   }
   public onUnLike() {
+    this.likeCallback.emit(false);
     this.isLike = false;
   }
 }

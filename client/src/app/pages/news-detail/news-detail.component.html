@@ -26,7 +26,9 @@
             <div class="news-name">
                 {{news?.name}}
             </div>
-            <like-button></like-button>
+            <like-button 
+                [isLike]="news?.fav"
+                (likeCallback)="onAction($event)"></like-button>
         </div>
         <div class="the-news" [innerHtml]="news?.description"></div>
     </div>

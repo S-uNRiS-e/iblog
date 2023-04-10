@@ -19,7 +19,7 @@ export class BlogResolver implements Resolve<Observable<string>> {
       .getPostById(route.paramMap.get('id') as string)
       .pipe(
         map(news => {
-          return this.blogParseService.parsePostData(news)[0]
+          return this.blogParseService.parsePostData(news.data,news.fav)[0]
         })
       )
   }

@@ -21,6 +21,13 @@ export class BlogHttpService {
   public getPostById(id:string):Observable<any> {
     return this._getPostById(id)
   }
+  public like(newsId:Object):Observable<any> {
+    return this._like(newsId)
+  }
+  private _like(payload:Object):Observable<any> {
+    debugger
+    return this.http.post(`/favorites`, payload)
+  }
   private _getPostById(id:string):Observable<any> {
     return this.http.get(`/post/${id}`)
   }

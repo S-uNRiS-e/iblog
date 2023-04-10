@@ -11,7 +11,7 @@ export class BlogParseService {
     return 'http://localhost:5500/'
   }
 
-  public parsePostData(data:any):Array<any> {
+  public parsePostData(data:any,fav?:boolean):Array<any> {
     return data.map((post:any) => {
       return {
         name:post.postName,
@@ -20,7 +20,8 @@ export class BlogParseService {
         userId:post.userId,
         postId:post._id,
         userName:post.author.username,
-        createdDate:post.createDate
+        createdDate:post.createDate,
+        fav
       }
     })
   }

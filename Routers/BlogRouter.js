@@ -5,8 +5,8 @@ const authMiddleware = require('../middleware/auth-middleware')
 const upload = require('../middleware/upload')
 
 
-router.post('/favorite/:postId',authMiddleware,blogController.addToFavorite)
-
+router.post('/favorites',authMiddleware,blogController.addToFavorite)
+router.post('/search/:name',authMiddleware,blogController.searchPost)
 router.post('/create',upload.single('files'),authMiddleware,blogController.createPost)
 router.get('/favorites', authMiddleware,blogController.getFavPosts)
 router.get('/posts', authMiddleware,blogController.getAllPosts)

@@ -1,4 +1,5 @@
 const PostModel = require('../Models/Post.js');
+const ApiError = require('../exeptions/api-error')
 const FavoriteModel = require('../Models/Favorite.js');
 class BlogService {
     async getAllPosts() {
@@ -28,17 +29,18 @@ class BlogService {
         }
     }
     async addToFavorite(payload) {
-        const {post,userId} = payload;
-
-        const favorite = await new FavoriteModel({
-            post,
-            userId
-        })
+        const { userId, newsId } = payload;
+        const favorite = await FavoriteModel.findOne({ userId, newsId });
+        if (favorite) {
+            throw ApiError.BadRequestError('This news already added to favorites');
+        }
         try {
-            await favorite.save()
-            return favorite;
+            const newFavorite = new FavoriteModel({ userId, newsId });
+            await newFavorite.save();
+            return newFavorite;
+            
         } catch (error) {
-            return error
+            console.log(error);
         }
     }
     async getUserPosts(userId) {
@@ -51,10 +53,27 @@ class BlogService {
     }
     async getUserFavPosts(userId) {
         try {
-            const userPosts = await FavoriteModel.find({userId})
-            return {favorites:userPosts}
+            const userPosts = await FavoriteModel.find({ userId })
+            return { favorites: userPosts }
         } catch (error) {
             console.log(error);
+        }
+    }
+    async getFavPostById(payload) {
+        try {
+            const favorite = await FavoriteModel.findOne(payload);
+            return favorite
+        } catch (error) {
+            
+        }
+    }
+    async getPostBySearchTerm(name) {
+        try {
+            const post = await PostModel.find({ postName: { $regex: name, $options: 'i' } })
+            return post
+        } catch (error) {
+            console.log(error);
+            
         }
     }
     async getPostByPostId(postId) {

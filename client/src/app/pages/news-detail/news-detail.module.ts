@@ -12,8 +12,8 @@ import { SharedModule } from 'src/app/modules/shared.module';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     NewsDetailRoutingModule,
-    SharedModule
   ]
 })
 export class NewsDetailModule { }

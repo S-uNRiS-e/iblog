@@ -1,6 +1,6 @@
 import { AuthService } from './modules/service/auth/auth.service';
 import { Component, OnDestroy, inject } from '@angular/core';
-import { delay, map, Observable, of, Subscription } from 'rxjs';
+import {  Subscription } from 'rxjs';
 import { BlogHttpService } from './modules/service/blog-http/blog-http.service';
 
 @Component({
