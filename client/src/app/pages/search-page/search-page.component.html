@@ -1,4 +1,13 @@
 <div class="search-page">
-    <app-search
-    (emitSearchEvent)="onSearchNews($event)"></app-search>
+    <app-search (emitSearchEvent)="onSearchNews($event)"></app-search>
+    <div class="news-list">
+        <app-news-item *ngFor="let item of posts" [news]="item"></app-news-item>
+        <app-skeleton
+            *ngIf="isShowLoading"
+            [count]="'1'"
+            [animation]="'progress'"
+            [height]="'112px'"
+            [bRadius]="20"
+        ></app-skeleton>
+    </div>
 </div>

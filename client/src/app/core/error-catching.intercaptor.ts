@@ -13,13 +13,13 @@ export class ErrorCatchingInterceptor implements HttpInterceptor {
         return next.handle(request)
             .pipe(
                 catchError((error: HttpErrorResponse) => {
-                    switch (error.status) {
-                        case 401:
-                            this.router.navigate(['/login']);
-                            break;
-                        default:
-                            break;
-                    }
+                    // switch (error.status) {
+                    //     case 401:
+                    //         this.router.navigate(['/welcome']);
+                    //         break;
+                    //     default:
+                    //         break;
+                    // }
                     return throwError(error);
                 })
             )

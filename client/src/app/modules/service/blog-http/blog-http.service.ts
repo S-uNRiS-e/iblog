@@ -18,6 +18,14 @@ export class BlogHttpService {
   public getAllPosts():Observable<any> {
     return this._getAllPosts()
   }
+  public searchNews(payload:{name:string}):Observable<any> {
+  return this._searchNews(payload)
+    .pipe(
+      map(responce => {
+        return  this.blogParseService.parsePostData(responce)
+      })
+    )
+  }
   public getPostById(id:string):Observable<any> {
     return this._getPostById(id)
   }
@@ -25,8 +33,10 @@ export class BlogHttpService {
     return this._like(newsId)
   }
   private _like(payload:Object):Observable<any> {
-    debugger
     return this.http.post(`/favorites`, payload)
+  }
+  private _searchNews(payload:{name:string}):Observable<any> {
+    return this.http.post(`/search`, {payload})
   }
   private _getPostById(id:string):Observable<any> {
     return this.http.get(`/post/${id}`)
@@ -34,8 +44,8 @@ export class BlogHttpService {
   private _getAllPosts():Observable<any> {
     return this.http.get(`/posts`)
       .pipe(
-        map(response => {
-          const parseData = this.blogParseService.parsePostData(response)
+        map(responce => {
+          const parseData = this.blogParseService.parsePostData(responce)
           const data = {
             posts:parseData,
             recommendPost:parseData[0]

@@ -80,10 +80,9 @@ class BlogController {
         }
     }
     async searchPost(req,res,next) {
-        const name = req.params.name;
-        console.log('name',name);
+        const name = req.body;
         try {
-            const post = await postService.getPostBySearchTerm(name);
+            const post = await postService.getPostBySearchTerm(name.payload.name);
             res.json(post);
         } catch (error) {
             next(error)

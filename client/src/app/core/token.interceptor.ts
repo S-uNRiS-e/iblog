@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -8,11 +8,13 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from '../modules/service/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-
-  constructor(public authService: AuthService) { }
+  private authService = inject(AuthService)
+  private router = inject(Router)
+  constructor() { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const isTokenExits = this.authService.isAuthenticated();
@@ -33,7 +35,8 @@ export class TokenInterceptor implements HttpInterceptor {
       catchError((err) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            // redirect user to the logout page
+            localStorage.removeItem('blog-token')
+            this.router.navigate(['/login']);
           }
         }
         return throwError(err);

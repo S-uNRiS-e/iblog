@@ -6,12 +6,19 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  @Output() emitSearchEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() emitSearchEvent: EventEmitter<string> = new EventEmitter<string>();
+  private value = ''
   constructor() {}
   ngOnInit(): void {
       
   }
   public handleDebouncedKeyUp(event:any):void {
-    console.log(event.target.value);
+    this.emitSearchEvent.emit(event.target.value);
+  }
+  public onSearch() {
+    this.emitSearchEvent.emit(this.value); 
+  }
+  public onChange(event:any) {
+    this.value = event.value;
   }
 }
