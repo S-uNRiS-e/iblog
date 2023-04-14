@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'profile', loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule),canActivate:[AuthGuard] },
   { path: 'news-detail/:id', loadChildren: () => import('./pages/news-detail/news-detail.module').then(m => m.NewsDetailModule),resolve: { news: BlogResolver } },
   { path: 'search', loadChildren: () => import('./pages/search-page/search-page.module').then(m => m.SearchPageModule) },
+  { path: 'favorites', loadChildren: () => import('./pages/favorites/favorites.module').then(m => m.FavoritesModule) },
 ];
 
 @NgModule({

@@ -1,0 +1,97 @@
+.profile-page {
+    .user {
+        width: 100%;
+        min-height: 255px;
+        background-image: url('/assets/images/profile/profile-bg-image.png');
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: contain;
+
+    }
+
+    .user-info {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        transform: translateY(-100px);
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            position: absolute;
+            top: -50px;
+            z-index: 2;
+            position: relative;
+
+            .file-input {
+                display: none;
+            }
+
+            .user-avatar {
+                cursor: pointer;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border: 6px solid rgba(86, 198, 171, 0.25);
+                border-radius: 50%;
+
+                width: 100px;
+                height: 100px;
+
+                img {
+                    width: 88px;
+                    height: 88px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+            }
+
+            .upload {
+                cursor: pointer;
+                border: 3px solid #0079ff;
+                border-radius: 50%;
+                width: 90px;
+                height: 90px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                position: relative;
+
+                img {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+
+        .description {
+            z-index: 1;
+            position: absolute;
+            background: #FFFCFC;
+            height: 135px;
+            width: 100%;
+            max-width: 341px;
+            margin: 0 auto;
+            border-radius: 28px;
+            box-shadow: 0px 20px 30px rgba(86, 198, 171, 0.25);
+            .user-name {
+                position: absolute;
+                left: 50%;
+                top: 55%;
+                transform: translate(-50%,-50%);
+                font-weight: 500;
+                font-size: 22px;
+            }
+        }
+    }
+}

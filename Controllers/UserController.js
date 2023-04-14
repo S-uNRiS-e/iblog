@@ -51,6 +51,26 @@ class UserController {
             next(error)
         }
     }
+    async getUserInfo(req,res,next) {
+        try {
+            const userId = req.user.id
+            const user = await userService.findUserByUserId(userId)
+            return res.status(200).json({user})
+            
+        } catch (error) {
+            next(error)
+        }
+    }
+    async uploadAvatar(req,res,next) {
+        try {
+            const userId = req.user.id
+            const user = await userService.findUserAndUpdate(userId,'avatar',req.file.path)
+            return res.status(200).json(user)
+            
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = new UserController()

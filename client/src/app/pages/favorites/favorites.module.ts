@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ProfileRoutingModule } from './profile-routing.module';
-import { ProfileComponent } from './profile.component';
+import { FavoritesRoutingModule } from './favorites-routing.module';
+import { FavoritesComponent } from './favorites.component';
 import { SharedModule } from 'src/app/modules/shared.module';
 
 
 @NgModule({
   declarations: [
-    ProfileComponent
+    FavoritesComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    ProfileRoutingModule
+    FavoritesRoutingModule,
   ]
 })
-export class ProfileModule { }
+export class FavoritesModule { }

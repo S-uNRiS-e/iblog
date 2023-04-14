@@ -45,6 +45,7 @@
         align-items: center;
 
         &--singin {
+            cursor: pointer;
             background-color: #4461F2;
             font-size: 17px;
             font-weight: 600;
@@ -57,6 +58,7 @@
         }
 
         &--register {
+            cursor: pointer;
             background-color: #fff;
             font-size: 17px;
             font-weight: 600;

@@ -6,8 +6,10 @@ const upload = require('../middleware/upload')
 
 
 router.post('/favorites',authMiddleware,blogController.addToFavorite)
+router.post('/dislike',authMiddleware,blogController.removeFavorite)
 router.post('/search',authMiddleware,blogController.searchPost)
 router.post('/create',upload.single('files'),authMiddleware,blogController.createPost)
+
 router.get('/favorites', authMiddleware,blogController.getFavPosts)
 router.get('/posts', authMiddleware,blogController.getAllPosts)
 router.get('/user-posts', authMiddleware,blogController.getUserPosts)

@@ -30,8 +30,10 @@
 
     .news-info {
         position: absolute;
+        width: 100%;
         bottom: 10px;
-        left: 36px;
+        left: 0;
+        padding: 0 40px;
         font-family: "Montserrat", sans-serif;
 
         .news-tag {
@@ -45,7 +47,7 @@
 
         .news-name {
             width: 100%;
-            max-width: 300px;
+            max-width: 480px;
             margin: 10px auto;
             color: #fff;
             font-style: normal;

@@ -29,19 +29,35 @@ class BlogService {
         }
     }
     async addToFavorite(payload) {
-        const { userId, newsId } = payload;
-        const favorite = await FavoriteModel.findOne({ userId, newsId });
+        const { userId, newsId, post } = payload;
+        const favorite = await FavoriteModel.findOne({ userId, newsId,post });
         if (favorite) {
             throw ApiError.BadRequestError('This news already added to favorites');
         }
         try {
-            const newFavorite = new FavoriteModel({ userId, newsId });
+            const newFavorite = new FavoriteModel({ userId, newsId, post });
             await newFavorite.save();
             return newFavorite;
             
         } catch (error) {
             console.log(error);
         }
+    }
+    async removeFavoritePost(payload) {
+        const { userId, newsId} = payload;
+
+        const favorite = await FavoriteModel.findOne({ userId, newsId });
+        if (favorite) {
+            try {
+                await FavoriteModel.deleteOne({ newsId });
+                return 'Success'
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            throw ApiError.BadRequestError("Can't remove");
+        }
+        
     }
     async getUserPosts(userId) {
         try {
@@ -53,8 +69,8 @@ class BlogService {
     }
     async getUserFavPosts(userId) {
         try {
-            const userPosts = await FavoriteModel.find({ userId })
-            return { favorites: userPosts }
+            const userPosts = await FavoriteModel.find({userId})
+            return {favorites:userPosts}
         } catch (error) {
             console.log(error);
         }

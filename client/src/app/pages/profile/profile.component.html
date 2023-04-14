@@ -1,1 +1,17 @@
-<p>profile works!</p>
+<div class="profile-page">
+    <div class="user"></div>
+    <div class="user-info">
+        <div class="avatar">
+            <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+            <div *ngIf="!userInfo?.avatar" class="upload" (click)="fileUpload.click()">
+                <img src="/assets/images/icons/upload-icon.png" alt="icon">
+            </div>
+            <div class="user-avatar" *ngIf="userInfo?.avatar" (click)="fileUpload.click()">
+                <img [src]="userInfo.avatar" alt="user-avatar">
+            </div>
+        </div>
+        <div class="description">
+            <div class="user-name">{{userInfo?.username}}</div>
+        </div>
+    </div>
+</div>

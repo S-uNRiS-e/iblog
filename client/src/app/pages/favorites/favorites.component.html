@@ -1,0 +1,13 @@
+<div class="favorites-page">
+    <h2 class="title">Your favorites news </h2>
+    <div class="favarites-list">
+        <app-news-item *ngFor="let item of posts" [news]="item"></app-news-item>
+        <app-skeleton
+            *ngIf="posts.length === 0"
+            [count]="'4'"
+            [animation]="'progress'"
+            [height]="'112px'"
+            [bRadius]="20"
+        ></app-skeleton>
+    </div>
+</div>

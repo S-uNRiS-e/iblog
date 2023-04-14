@@ -45,15 +45,7 @@ class BlogController {
         try {
             const userId = req.user.id
             const posts = await postService.getUserPosts(userId)
-            const result = posts.map(item => {
-                return {
-                    postId: item._id,
-                    postName: item.postName,
-                    postDescription: item.postDescription,
-                    background: item.background,
-                    createdDate: item.createDate
-                }
-            })
+            const result = posts
             res.status(200).json(result)
         } catch (error) {
             next(error)
@@ -72,9 +64,20 @@ class BlogController {
     async addToFavorite(req, res, next) {
         try {
             const { newsId } = req.body;
+            const post = await postService.getPostByPostId(newsId)
             const userId = req.user.id;
-            const newFavorite = await postService.addToFavorite({ userId, newsId });
+            const newFavorite = await postService.addToFavorite({ userId, newsId, post });
             res.status(200).json(newFavorite)
+        } catch (error) {
+            next(error)
+        }
+    }
+    async removeFavorite(req,res,next) {
+        try {
+            const { newsId } = req.body;
+            const userId = req.user.id;
+            const post = await postService.removeFavoritePost({ userId, newsId })
+            res.json(post);
         } catch (error) {
             next(error)
         }

@@ -36,6 +36,13 @@ export class NewsDetailComponent implements OnInit, OnDestroy {
           .subscribe(result => {},err => {})
       )
     }
+    if(!action) {
+      this.subscriptions$.add(
+        this.blogHttpService
+          .dislike({newsId:this.news.postId})
+          .subscribe(result => {},err => {})
+      )
+    }
   }
   public parseUserName(userName:string):string {
     return userName.charAt(0);
