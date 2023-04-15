@@ -1,11 +1,11 @@
 .profile-page {
     .user {
         width: 100%;
-        min-height: 255px;
+        min-height: 245px;
         background-image: url('/assets/images/profile/profile-bg-image.png');
         background-repeat: no-repeat;
         background-position: top center;
-        background-size: contain;
+        background-size: cover;
 
     }
 
@@ -84,14 +84,40 @@
             margin: 0 auto;
             border-radius: 28px;
             box-shadow: 0px 20px 30px rgba(86, 198, 171, 0.25);
+            .logout {
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                cursor: pointer;
+            }
             .user-name {
                 position: absolute;
                 left: 50%;
                 top: 55%;
-                transform: translate(-50%,-50%);
+                transform: translate(-50%, -50%);
                 font-weight: 500;
                 font-size: 22px;
             }
+        }
+    }
+    .title {
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 15px;
+        padding: 0 10px;
+    }
+    .user-posts {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+
+        img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
         }
     }
 }

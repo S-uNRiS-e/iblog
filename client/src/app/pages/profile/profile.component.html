@@ -12,6 +12,11 @@
         </div>
         <div class="description">
             <div class="user-name">{{userInfo?.username}}</div>
+            <img class="logout" src="/assets/images/icons/logout-icon.svg" alt="logout" (click)="logout()">
         </div>
+    </div>
+    <div class="title">Posts</div>
+    <div class="user-posts">
+        <img *ngFor="let post of posts" [src]="post?.banner" alt="post" (click)="openNews(post)">
     </div>
 </div>

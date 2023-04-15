@@ -8,7 +8,7 @@
                     [ngClass]="{'error': getControll('username').invalid && getControll('username').touched && isShowError}" 
                     [value]="getControll('username').value" 
                     formControlName="username" 
-                    placeholder="Enter your name"
+                    placeholder="Enter your portal name"
                     (input)="onChange('username')">
                 <div class="icon" (click)="getControll('username').patchValue('')">
                     <img [src]="cancelIcon" alt="">

@@ -21,6 +21,9 @@ export class UserHttpService {
         return this.userParseService.parseUserInfo(user)
       }))
   }
+  public logout():Observable<any> {
+    return this.http.get('/logout')
+  }
   private _uploadAvatar(formData: FormData): Observable<any> {
     return this.http.post(`/upload-avatar`, formData)
   }

@@ -6,7 +6,7 @@ const upload = require('../middleware/upload')
 router.get('/users',authMiddleware,userController.getUsers);
 router.get('/user-info',authMiddleware,userController.getUserInfo);
 router.get('/user/:userId',authMiddleware,userController.getUserByUserId);
-
+router.get('/logout',userController.logout)
 router.post('/upload-avatar', upload.single('avatar'),authMiddleware, userController.uploadAvatar)
 
 module.exports = router

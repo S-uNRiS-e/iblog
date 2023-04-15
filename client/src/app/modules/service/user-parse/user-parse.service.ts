@@ -10,7 +10,7 @@ export class UserParseService {
   constructor() { }
   public parseUserInfo(userInfo: any):any {
     return {
-      avatar:`${this.ImageApiUrl}${userInfo.avatar}`,
+      avatar:userInfo.avatar ? `${this.ImageApiUrl}${userInfo.avatar}` : null,
       username:userInfo.username
     }
   }

@@ -3,7 +3,7 @@
     <div class="favarites-list">
         <app-news-item *ngFor="let item of posts" [news]="item"></app-news-item>
         <app-skeleton
-            *ngIf="posts.length === 0"
+            *ngIf="loading"
             [count]="'4'"
             [animation]="'progress'"
             [height]="'112px'"
