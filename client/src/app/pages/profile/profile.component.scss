@@ -84,12 +84,14 @@
             margin: 0 auto;
             border-radius: 28px;
             box-shadow: 0px 20px 30px rgba(86, 198, 171, 0.25);
+
             .logout {
                 position: absolute;
                 right: 15px;
                 top: 15px;
                 cursor: pointer;
             }
+
             .user-name {
                 position: absolute;
                 left: 50%;
@@ -100,12 +102,14 @@
             }
         }
     }
+
     .title {
         font-size: 22px;
         font-weight: 500;
         margin-bottom: 15px;
         padding: 0 10px;
     }
+
     .user-posts {
         display: flex;
         justify-content: space-between;
@@ -119,5 +123,34 @@
             border-radius: 10px;
             display: block;
         }
+    }
+
+    .create-first-post-action {
+        text-align: center;
+        button {
+            cursor: pointer;
+            background: #0079ff;
+            border-radius: 0.9em;
+            padding: 0.8em 1.2em 0.8em 1em;
+            transition: all ease-in-out 0.2s;
+            font-size: 16px;
+
+            span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                img {
+                    width: 18px;
+                    height: 18px;
+                }
+                .create-title {
+                    color: #fff;
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+
     }
 }

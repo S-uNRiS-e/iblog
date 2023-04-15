@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { DialogService } from '@ngneat/dialog';
 import { Subscription } from 'rxjs';
+import { CreatePostComponent } from 'src/app/modules/components/create-post/create-post.component';
 import { BlogHttpService } from 'src/app/modules/service/blog-http/blog-http.service';
 import { ToastrService } from 'src/app/modules/service/toastr/toastr.service';
 import { UserHttpService } from 'src/app/modules/service/user-http/user-http.service';
@@ -11,12 +13,14 @@ import { UserHttpService } from 'src/app/modules/service/user-http/user-http.ser
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
+  private dialog = inject(DialogService);
   private userHttpService = inject(UserHttpService);
   private blogHttpService = inject(BlogHttpService);
   private toastrService = inject(ToastrService)
   private router = inject(Router)
   private subscriptions$ = new Subscription();
 
+  public loading: boolean = true;
   public userInfo: { username: string, avatar: string } | any = {}
   public posts: any = []
   ngOnInit(): void {
@@ -33,12 +37,16 @@ export class ProfileComponent implements OnInit, OnDestroy {
           this.toastrService.showError(err.error.message)
         }
       })
-
     )
+    this.getUserPosts()
+
+  }
+  private getUserPosts() {
     this.subscriptions$.add(
       this.blogHttpService.getUserPosts().subscribe({
         next: (responce) => {
           this.posts = responce
+          this.loading = false
         },
         error: (err) => {
           this.toastrService.showError(err.error.message)
@@ -46,6 +54,16 @@ export class ProfileComponent implements OnInit, OnDestroy {
       })
     )
   }
+
+  public create() {
+    const dialogRef = this.dialog.open(CreatePostComponent);
+    dialogRef.afterClosed$.subscribe(status => {
+      if (status) {
+        this.getUserPosts()
+      }
+    })
+  }
+  
   public logout() {
     this.subscriptions$.add(
       this.userHttpService.logout().subscribe({

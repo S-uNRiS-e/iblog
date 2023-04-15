@@ -19,4 +19,12 @@
     <div class="user-posts">
         <img *ngFor="let post of posts" [src]="post?.banner" alt="post" (click)="openNews(post)">
     </div>
+    <div class="create-first-post-action" *ngIf="!loading && posts.length === 0">
+        <button (click)="create()">
+            <span>
+              <img src="/assets/images/icons/plus-svg.svg" alt="create icon"> 
+              <div class="create-title">Create</div>
+            </span>
+          </button>
+    </div>
 </div>
