@@ -13,7 +13,7 @@ import { ToastrService } from '../../service/toastr/toastr.service';
 export class CreatePostComponent {
   private blogHttpService = inject(BlogHttpService)
   private toastrService = inject(ToastrService)
-  constructor( ) { }
+  constructor() { }
 
   ref: DialogRef<any> = inject(DialogRef);
   createForm: FormGroup = new FormGroup({
@@ -36,13 +36,15 @@ export class CreatePostComponent {
 
       this.blogHttpService.createPost(formData)
         .subscribe(
-          result => {
-            this.toastrService.showSuccess('Successfully created')
-            this.ref.close(true)
-          },
-          err => {
-            this.toastrService.showError(err.error.message)
-            this.ref.close(false)
+          {
+            next: result => {
+              this.toastrService.showSuccess('Successfully created')
+              this.ref.close(true)
+            },
+            error: (err) => {
+              this.toastrService.showError(err.error.message)
+              this.ref.close(false)
+            }
           })
     }
   }

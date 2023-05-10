@@ -20,16 +20,10 @@ export class MainComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.getAllPosts()
   }
-
-  public updateFeed(status:boolean):void {
-    if (status) {
-      this.getAllPosts()
-    }
-  }
-
+ 
   private getAllPosts():void {
     this.subscriptions$.add(
-      this.blogHttpService.posts$.pipe(take(1)).subscribe((responce:any) => {
+      this.blogHttpService.posts$.subscribe((responce:any) => {
         const {posts,recommendPost} = responce;
         if (posts && recommendPost) {
           this.posts = posts;
